@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { cleanup, render, screen } from "@testing-library/react";
 import App from "./App";
 import LoginPage from "./pages/auth/Login";
