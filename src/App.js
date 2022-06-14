@@ -1,5 +1,18 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import LoginPage from "./pages/auth/Login";
+import NotFound from "./pages/NotFound";
+
 function App() {
-  return <div title="secondhand">Second Hand.</div>;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
