@@ -1,6 +1,8 @@
+/* eslint-disable prettier/prettier */
 import { cleanup, render, screen } from "@testing-library/react";
 import App from "./App";
 import LoginPage from "./pages/auth/Login";
+import RegisterPage from "./pages/auth/Register";
 
 beforeEach(() => {
   // eslint-disable-next-line testing-library/no-render-in-setup
@@ -8,6 +10,7 @@ beforeEach(() => {
     <div>
       <App />
       <LoginPage />
+      <RegisterPage />
     </div>,
   );
 });
