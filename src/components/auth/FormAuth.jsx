@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { FiArrowLeft, FiEye } from "react-icons/fi";
 import StatusBar from "../StatusBar";
 

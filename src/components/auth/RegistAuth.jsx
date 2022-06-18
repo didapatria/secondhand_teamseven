@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { FiArrowLeft, FiEye } from "react-icons/fi";
 import StatusBar from "../StatusBar";
 
@@ -10,7 +11,7 @@ export default function RegistAuth() {
           <FiArrowLeft className="block md:hidden my-4 text-2xl" />
           <div className="font-bold pt-4 text-2xl">Daftar</div>
           <form className="space-y-4">
-            <div className="space-y-1">
+          <div className="space-y-1">
               <div>Nama</div>
               <input
                 type="name"

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import FormAuth from "../../components/auth/FormAuth";
 
 export default function LoginPage() {

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { FiMenu, FiSearch, FiLogIn } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
@@ -13,13 +14,13 @@ export default function Navbar() {
             </div>
             <div className="md:flex-1 w-10/12">
               <div className="flex justify-between items-center space-x-4 px-6 py-3 bg-white md:bg-slate-100 rounded-2xl">
-                <form className="w-full">
+                <form>
                   <input
                     type="search"
                     name=""
                     id=""
                     placeholder="Cari di sini ..."
-                    className="w-full bg-white md:bg-slate-100"
+                    className="bg-white md:bg-slate-100"
                   />
                 </form>
                 <FiSearch className="text-2xl text-slate-400" />
