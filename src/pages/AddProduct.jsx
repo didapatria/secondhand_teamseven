@@ -1,5 +1,3 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable no-unused-vars */
 import { FiMenu, FiSearch, FiLogIn } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import StatusBar from "../components/StatusBar";
