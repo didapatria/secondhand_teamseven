@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import RegistAuth from "../../components/auth/RegistAuth";
 
 export default function RegisterPage() {
