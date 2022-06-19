@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { FiMenu, FiSearch, FiLogIn } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
