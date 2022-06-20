@@ -15,15 +15,15 @@ export default function AddProductPage() {
           </div>
         </div>
       </div>
-      <div className="md:mt-10 flex justify-center">
-        <div className="md:flex md:w-1/2 w-11/12 md:space-x-20">
+      <div className="flex justify-center md:mt-10">
+        <div className="w-11/12 md:flex md:w-1/2 md:space-x-20">
           <StatusBar />
-          <div className="flex justify-between items-center md:items-start my-4 md:my-0">
+          <div className="my-4 flex items-center justify-between md:my-0 md:items-start">
             <FiArrowLeft className="text-2xl" />
-            <div className="md:hidden font-bold">Lengkapi Detail Produk</div>
+            <div className="font-bold md:hidden">Lengkapi Detail Produk</div>
             <div className="text-2xl" />
           </div>
-          <div className="flex-1 mt-10 md:mt-0">
+          <div className="mt-10 flex-1 md:mt-0">
             <form className="space-y-4">
               <div className="space-y-1">
                 <div>Nama Produk</div>
@@ -66,7 +66,7 @@ export default function AddProductPage() {
                   <FiPlus />
                 </div>
               </div>
-              <div className="pt-2 flex w-full space-x-4 text-center">
+              <div className="flex w-full space-x-4 pt-2 text-center">
                 <div className="w-1/2 rounded-2xl border border-purple-900 px-6 py-3">
                   Preview
                 </div>

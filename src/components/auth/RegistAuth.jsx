@@ -3,18 +3,18 @@ import StatusBar from "../StatusBar";
 
 export default function RegistAuth() {
   return (
-    <div className="w-11/12 md:w-8/12 flex md:items-center space-y-10">
-      <div className="w-full flex flex-col justify-between md:justify-center h-screen">
+    <div className="flex w-11/12 space-y-10 md:w-8/12 md:items-center">
+      <div className="flex h-screen w-full flex-col justify-between md:justify-center">
         <div className="space-y-6">
           <StatusBar />
-          <FiArrowLeft className="block md:hidden my-4 text-2xl" />
-          <div className="font-bold pt-4 text-2xl">Daftar</div>
+          <FiArrowLeft className="my-4 block text-2xl md:hidden" />
+          <div className="pt-4 text-2xl font-bold">Daftar</div>
           <form className="space-y-4">
             <div className="space-y-1">
               <div>Nama</div>
               <input
                 type="name"
-                className="w-full px-4 py-3 border border-slate-300 rounded-2xl"
+                className="w-full rounded-2xl border border-slate-300 px-4 py-3"
                 placeholder="Nama Lengkap"
               />
             </div>
@@ -22,13 +22,13 @@ export default function RegistAuth() {
               <div>Email</div>
               <input
                 type="email"
-                className="w-full px-4 py-3 border border-slate-300 rounded-2xl"
+                className="w-full rounded-2xl border border-slate-300 px-4 py-3"
                 placeholder="Contoh: johndee@gmail.com"
               />
             </div>
             <div className="space-y-1">
               <div>Password</div>
-              <div className="flex items-center space-x-4 px-4 py-3 border border-slate-300 rounded-2xl">
+              <div className="flex items-center space-x-4 rounded-2xl border border-slate-300 px-4 py-3">
                 <input
                   type="password"
                   className="w-full"
@@ -38,12 +38,12 @@ export default function RegistAuth() {
               </div>
             </div>
           </form>
-          <div className="flex justify-center px-4 py-3 bg-purple-900 text-white rounded-2xl hover:bg-white hover:text-purple-900 hover:shadow-lg hover:shadow-purple-900/50">
+          <div className="flex justify-center rounded-2xl bg-purple-900 px-4 py-3 text-white hover:bg-white hover:text-purple-900 hover:shadow-lg hover:shadow-purple-900/50">
             Daftar
           </div>
         </div>
         <div>
-          <div className="flex justify-center items-end my-6">
+          <div className="my-6 flex items-end justify-center">
             <div className="flex space-x-2">
               <div>Sudah punya akun?</div>
               <span>

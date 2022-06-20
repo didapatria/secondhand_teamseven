@@ -9,7 +9,7 @@ import {
 export default function StatusBar() {
   return (
     <div className="block md:hidden">
-      <div className="flex font-sub justify-between">
+      <div className="flex justify-between font-sub">
         <div>3:19</div>
         <div className="flex items-center space-x-1">
           <MdBluetooth />
