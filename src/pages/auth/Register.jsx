@@ -12,14 +12,14 @@ export default function RegisterPage() {
           }}
         />
         <div className="flex-1">
-          <div className="flex justify-center items-center h-screen">
+          <div className="flex h-screen items-center justify-center">
             <RegistAuth />
           </div>
         </div>
       </div>
-      <div className="relative hidden md:block md:w-1/2 h-screen bg-gradient-to-b from-purple-400/0 to-purple-400">
-        <div className="flex justify-center items-center h-screen">
-          <div className="w-10/12 font-bold text-4xl text-white">
+      <div className="relative hidden h-screen bg-gradient-to-b from-purple-400/0 to-purple-400 md:block md:w-1/2">
+        <div className="flex h-screen items-center justify-center">
+          <div className="w-10/12 text-4xl font-bold text-white">
             <div className="w-0" title="secondhand">
               Second Hand.
             </div>
