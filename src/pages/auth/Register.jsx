@@ -1,6 +1,6 @@
-import FormAuth from "../../components/auth/FormAuth";
+import RegistAuth from "../../components/auth/RegistAuth";
 
-export default function LoginPage() {
+export default function RegisterPage() {
   return (
     <div>
       <div className="absolute w-full md:flex">
@@ -13,7 +13,7 @@ export default function LoginPage() {
         />
         <div className="flex-1">
           <div className="flex h-screen items-center justify-center">
-            <FormAuth />
+            <RegistAuth />
           </div>
         </div>
       </div>
