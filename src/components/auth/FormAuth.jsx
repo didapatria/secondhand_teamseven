@@ -1,4 +1,6 @@
 import { FiArrowLeft, FiEye } from "react-icons/fi";
+import { Link } from "react-router-dom";
+
 import StatusBar from "../StatusBar";
 
 export default function FormAuth() {
@@ -7,7 +9,9 @@ export default function FormAuth() {
       <div className="flex h-screen w-full flex-col justify-between md:justify-center">
         <div className="space-y-6">
           <StatusBar />
-          <FiArrowLeft className="my-4 block text-2xl md:hidden" />
+          <Link to="/">
+            <FiArrowLeft className="my-4 block text-2xl md:hidden" />
+          </Link>
           <div className="pt-4 text-2xl font-bold">Masuk</div>
           <form className="space-y-4">
             <div className="space-y-1">

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   FiBell,
   FiBox,
@@ -9,6 +10,7 @@ import {
   FiPlus,
   FiSearch,
   FiUser,
+  FiX,
 } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
@@ -16,6 +18,7 @@ import StatusBar from "../../components/StatusBar";
 import Card from "../../components/Card";
 
 export default function ListProductPage() {
+  const [isNavOpen, setIsNavOpen] = useState(false);
   return (
     <div>
       <div className="mx-auto w-11/12">
@@ -27,7 +30,10 @@ export default function ListProductPage() {
           {/* Mobile */}
           <div className="flex items-center space-x-4 md:hidden">
             <div className="rounded-2xl bg-white px-3 py-3">
-              <FiMenu className="text-2xl" />
+              <FiMenu
+                className="text-2xl"
+                onClick={() => setIsNavOpen((prev) => !prev)}
+              />
             </div>
             <div className="text-xl font-bold">Daftar Jual Saya</div>
           </div>
@@ -119,6 +125,39 @@ export default function ListProductPage() {
                 </div>
               </Link>
               <Card />
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* Mobile-Sidebar */}
+      <div
+        className={
+          isNavOpen ? "absolute inset-0 h-screen bg-black/60" : "hidden"
+        }
+      >
+        <div
+          className={
+            isNavOpen
+              ? "absolute inset-y-0 left-0 z-20 h-screen w-1/2 bg-white py-9 px-4"
+              : "hidden"
+          }
+        >
+          <FiX
+            className="absolute top-9 right-6 text-2xl"
+            onClick={() => setIsNavOpen(false)}
+          />
+          <div className="space-y-5">
+            <div className="font-bold">Second Hand</div>
+            <div className="space-y-4">
+              <div>
+                <Link to="/seller/notification">Notifikasi</Link>
+              </div>
+              <div>
+                <Link to="/seller/list-product">Daftar Jual</Link>
+              </div>
+              <div>
+                <Link to="/seller/account">Akun Saya</Link>
+              </div>
             </div>
           </div>
         </div>
