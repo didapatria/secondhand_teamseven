@@ -1,30 +1,26 @@
 import {
+  FiArrowLeft,
   FiBell,
   FiChevronRight,
   FiList,
-  FiMenu,
   FiSearch,
   FiUser,
 } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
-import StatusBar from "../../components/StatusBar";
-
 export default function PreviewProductPage() {
   return (
     <div>
-      <div className="mx-auto w-11/12">
-        <StatusBar />
-      </div>
       {/* Navbar */}
-      <div className="flex w-full justify-center px-0 py-2 md:relative md:py-5 md:shadow-lg">
+      <div className="relative flex w-full justify-center px-0 py-2 md:relative md:py-5 md:shadow-lg">
         <div className="relative w-11/12 md:container md:h-12">
           {/* Mobile */}
-          <div className="flex items-center space-x-4 md:hidden">
-            <div className="rounded-2xl bg-white px-3 py-3">
-              <FiMenu className="text-2xl" />
-            </div>
-            <div className="text-xl font-bold">Daftar Jual Saya</div>
+          <div className="absolute inset-x-0 top-11 z-10 flex items-center space-x-4 md:hidden">
+            <Link to="/">
+              <div className="h-fit rounded-full bg-white p-1">
+                <FiArrowLeft className="text-2xl" />
+              </div>
+            </Link>
           </div>
           {/* Desktop */}
           <div className="hidden md:flex md:justify-between">
@@ -54,82 +50,93 @@ export default function PreviewProductPage() {
         </div>
       </div>
       <div className="flex justify-center md:mt-10">
-        <div className="w-11/12 md:w-8/12">
-          <div className="flex space-x-8">
-            <div className="w-3/5 space-y-6">
-              <div className="relative h-1/3 w-full">
+        <div className="w-full space-y-6 md:w-8/12">
+          <div className="-space-y-16 md:flex md:space-y-0 md:space-x-8">
+            <div className="w-full md:w-3/5">
+              <div className="relative -z-10 -mt-4 md:mt-0">
                 <img
                   src="../assets/images/product.jpg"
                   alt=""
-                  className="h-full w-full rounded-2xl object-cover"
+                  className="h-80 w-full object-cover md:h-[400px] md:rounded-2xl"
                 />
-                <div className="absolute inset-y-1/2 right-4 h-fit rounded-full bg-white p-1 text-gray-400">
-                  <FiChevronRight className="text-2xl" />
-                </div>
-              </div>
-              <div className="rounded-2xl bg-white p-4 shadow-md">
-                <div className="space-y-4 text-sm">
-                  <div className="font-medium">Deskripsi</div>
-                  <div className="text-gray-400">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                    occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum. Lorem ipsum dolor sit
-                    amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad
-                    minim veniam, quis nostrud exercitation ullamco laboris nisi
-                    ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                    reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id
-                    est laborum.
+                <div className="absolute inset-y-1/2 right-4 hidden items-center md:flex">
+                  <div className="rounded-full bg-white p-1 text-gray-400">
+                    <FiChevronRight className="text-2xl" />
                   </div>
                 </div>
               </div>
             </div>
-            <div className="flex-1 space-y-6">
-              <div className="space-y-6 rounded-2xl bg-white p-4 shadow-md">
-                <div className="space-y-2">
-                  <div className="space-y-1">
-                    <div>Jam Tangan Casio</div>
-                    <div className="text-xs text-gray-400">Aksesoris</div>
+            <div className="mx-auto w-11/12 flex-1 md:w-full">
+              <div className="mb-6 flex items-center justify-center space-x-2 md:hidden md:space-x-0">
+                <div className="h-2 w-2 rounded-full border border-white bg-white" />
+                <div className="h-2 w-2 rounded-full border border-white bg-none" />
+                <div className="h-2 w-2 rounded-full border border-white bg-none" />
+                <div className="h-2 w-2 rounded-full border border-white bg-none" />
+              </div>
+              <div className="space-y-6">
+                <div className="space-y-6 rounded-2xl bg-white p-4 shadow-md">
+                  <div className="space-y-2">
+                    <div className="space-y-1">
+                      <div>Jam Tangan Casio</div>
+                      <div className="text-xs text-gray-400">Aksesoris</div>
+                    </div>
+                    <div>Rp 250.000</div>
                   </div>
-                  <div>Rp 250.000</div>
+                  <div className="hidden space-y-4 md:block">
+                    <div className="flex w-full">
+                      <Link
+                        to="/seller/list-product"
+                        className="w-full rounded-2xl border bg-purple-900 px-6 py-3 text-center font-medium text-white"
+                      >
+                        Terbitkan
+                      </Link>
+                    </div>
+                    <div className="flex w-full">
+                      <Link
+                        to="/seller/info-product"
+                        className="w-full rounded-2xl border border-purple-900 bg-white px-6 py-3 text-center font-medium"
+                      >
+                        Edit
+                      </Link>
+                    </div>
+                  </div>
                 </div>
-                <div className="space-y-4">
-                  <div className="flex w-full">
-                    <Link
-                      to="/seller/list-product"
-                      className="w-full rounded-2xl border bg-purple-900 px-6 py-3 text-center font-medium text-white"
-                    >
-                      Terbitkan
-                    </Link>
-                  </div>
-                  <div className="flex w-full">
-                    <Link
-                      to="/seller/info-product"
-                      className="w-full rounded-2xl border border-purple-900 bg-white px-6 py-3 text-center font-medium"
-                    >
-                      Edit
-                    </Link>
+                <div className="rounded-2xl bg-white p-4 shadow-md">
+                  <div className="flex items-center space-x-5">
+                    <img
+                      src="../assets/images/profile.png"
+                      alt=""
+                      className="h-12 w-12 rounded-xl object-cover"
+                    />
+                    <div>
+                      <div className="font-medium">Nama Penjual</div>
+                      <div className="text-gray-400">kota</div>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className="rounded-2xl bg-white p-4 shadow-md">
-                <div className="flex items-center space-x-5">
-                  <img
-                    src="../assets/images/profile.png"
-                    alt=""
-                    className="h-12 w-12 rounded-xl object-cover"
-                  />
-                  <div>
-                    <div className="font-medium">Nama Penjual</div>
-                    <div className="text-gray-400">kota</div>
-                  </div>
+            </div>
+          </div>
+          <div className="w-full md:w-3/5">
+            <div className="mx-auto w-11/12 rounded-2xl bg-white p-4 shadow-md md:w-full">
+              <div className="space-y-4 text-sm">
+                <div className="font-medium">Deskripsi</div>
+                <div className="text-gray-400">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum. Lorem ipsum dolor sit amet,
+                  consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                  ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                  ea commodo consequat. Duis aute irure dolor in reprehenderit
+                  in voluptate velit esse cillum dolore eu fugiat nulla
+                  pariatur. Excepteur sint occaecat cupidatat non proident, sunt
+                  in culpa qui officia deserunt mollit anim id est laborum.
                 </div>
               </div>
             </div>
