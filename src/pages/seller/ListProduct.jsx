@@ -76,42 +76,48 @@ export default function ListProductPage() {
                   <div className="text-gray-400">kota</div>
                 </div>
               </div>
-              <div className="h-fit rounded-2xl border border-purple-900 px-3 py-1">
+              <Link
+                to="/info-profile"
+                className="h-fit rounded-2xl border border-purple-900 px-3 py-1"
+              >
                 Edit
-              </div>
+              </Link>
             </div>
           </div>
           <div className="w-full space-y-6 md:flex md:space-x-8 md:space-y-0">
             <div className="h-fit space-y-6 rounded-2xl md:w-1/5 md:p-5 md:shadow-md">
               <div className="hidden md:block">Kategori</div>
               <div className="flex space-x-4 overflow-auto md:block md:space-x-0 md:divide-y">
-                <div className="flex items-center space-x-2 rounded-xl bg-purple-900 px-6 py-3 text-white md:space-x-4 md:rounded-none md:bg-transparent md:px-0 md:py-2 md:text-purple-900">
-                  <FiBox />
+                <div className="flex items-center space-x-2 rounded-xl bg-purple-900 px-6 py-3 text-white md:space-x-4 md:rounded-none md:bg-transparent md:px-0 md:py-2 md:font-medium md:text-purple-900">
+                  <FiBox className="text-xl md:text-2xl" />
                   <div className="hidden w-10/12 md:block">Semua Produk</div>
                   <div className="w-10/12 md:hidden">Produk</div>
                   <FiChevronRight className="hidden md:block" />
                 </div>
-                <div className="flex items-center space-x-2 rounded-xl bg-purple-200 px-6 py-3 md:space-x-4 md:rounded-none md:bg-transparent md:px-0 md:py-2 md:text-purple-900">
-                  <FiHeart />
+                <div className="flex items-center space-x-2 rounded-xl bg-purple-200 px-6 py-3 md:space-x-4 md:rounded-none md:bg-transparent md:px-0 md:py-2 md:font-medium">
+                  <FiHeart className="text-xl md:text-2xl" />
                   <div className="md:w-10/12">Diminati</div>
                   <FiChevronRight className="hidden md:block" />
                 </div>
-                <div className="flex items-center space-x-2 rounded-xl bg-purple-200 px-6 py-3 md:space-x-4 md:rounded-none md:bg-transparent md:px-0 md:py-2 md:text-purple-900">
-                  <FiDollarSign />
+                <div className="flex items-center space-x-2 rounded-xl bg-purple-200 px-6 py-3 md:space-x-4 md:rounded-none md:bg-transparent md:px-0 md:py-2 md:font-medium">
+                  <FiDollarSign className="text-xl md:text-2xl" />
                   <div className="md:w-10/12">Terjual</div>
                   <FiChevronRight className="hidden md:block" />
                 </div>
               </div>
             </div>
             <div className="grid flex-1 grid-cols-2 gap-4 md:grid-cols-3 md:gap-6">
-              <div className="flex items-center justify-center rounded border border-dashed border-slate-300 p-5 shadow-md">
+              <Link
+                to="/seller/info-product"
+                className="flex items-center justify-center rounded border border-dashed border-slate-300 p-5 shadow-md"
+              >
                 <div className="w-full">
                   <div className="flex justify-center text-3xl font-bold">
                     <FiPlus />
                   </div>
                   <div className="flex justify-center">Tambah Produk</div>
                 </div>
-              </div>
+              </Link>
               <Card />
             </div>
           </div>
