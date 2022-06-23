@@ -20,13 +20,13 @@ export default function FormAuth() {
             </div>
             <div className="space-y-1">
               <div>Password</div>
-              <div className="flex items-center space-x-4 rounded-2xl border border-slate-300 px-4 py-3">
+              <div className="relative">
                 <input
                   type="password"
-                  className="w-full"
+                  className="w-full rounded-2xl border border-slate-300 px-4 py-3"
                   placeholder="Masukkan password"
                 />
-                <FiEye className="text-2xl text-slate-400" />
+                <FiEye className="absolute inset-y-3 right-4 text-2xl text-slate-400" />
               </div>
             </div>
           </form>

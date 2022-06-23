@@ -1,29 +1,40 @@
 import { FiArrowLeft, FiPlus } from "react-icons/fi";
-import StatusBar from "../components/StatusBar";
+import { Link } from "react-router-dom";
 
-export default function AddProductPage() {
+import StatusBar from "../../components/StatusBar";
+
+export default function InfoProductPage() {
   return (
     <div>
-      <div className="hidden md:block">
-        <div className="flex justify-center bg-white bg-none px-0 py-5 shadow-lg">
-          <div className="container">
-            <div className="flex justify-between">
-              <div className="flex items-center justify-between md:w-5/12 md:space-x-6">
-                <div className="h-8 w-24 bg-purple-900 md:block" />
+      <div className="mx-auto w-11/12">
+        <StatusBar />
+      </div>
+      {/* Navbar */}
+      <div className="flex w-full justify-center px-0 py-4 md:relative md:py-5 md:shadow-lg">
+        <div className="relative w-11/12 md:container md:h-12">
+          {/* Mobile */}
+          <div className="flex items-center space-x-4 md:hidden">
+            <Link to="/">
+              <FiArrowLeft className="text-2xl" />
+            </Link>
+            <div className="absolute inset-0 -z-10 text-center font-medium">
+              Lengkapi Detail Produk
+            </div>
+          </div>
+          {/* Desktop */}
+          <div className="hidden md:flex md:justify-between">
+            <div className="flex h-12 items-center justify-between space-x-6">
+              <Link to="/" className="h-8 w-24 bg-purple-900" />
+              <div className="absolute inset-0 inset-y-auto -z-10 text-center font-medium">
+                Lengkapi Detail Produk
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="flex justify-center md:mt-10">
-        <div className="w-11/12 md:flex md:w-1/2 md:space-x-20">
-          <StatusBar />
-          <div className="my-4 flex items-center justify-between md:my-0 md:items-start">
-            <FiArrowLeft className="text-2xl" />
-            <div className="font-bold md:hidden">Lengkapi Detail Produk</div>
-            <div className="text-2xl" />
-          </div>
-          <div className="mt-10 flex-1 md:mt-0">
+      <div className="mt-6 flex justify-center md:mt-10">
+        <div className="w-11/12 md:flex md:w-full md:justify-center">
+          <div className="md:w-2/5">
             <form className="space-y-4">
               <div className="space-y-1">
                 <div>Nama Produk</div>
@@ -52,22 +63,21 @@ export default function AddProductPage() {
               </div>
               <div className="space-y-1">
                 <div>Deskripsi</div>
-                <div className="h-20 rounded-2xl border border-slate-300 px-4 py-3">
-                  <input
-                    type="text"
-                    className="w-full"
-                    placeholder="Contoh: Jalan Ikan Hiu 33"
-                  />
-                </div>
+                <textarea
+                  name=""
+                  id=""
+                  className="w-full rounded-2xl border border-slate-300 px-4 py-3"
+                  placeholder="Contoh: Jalan Ikan Hiu 33"
+                />
               </div>
               <div className="space-y-1">
                 <div>Foto Produk</div>
-                <div className="flex h-20 w-20 items-center justify-center rounded-2xl border border-dashed border-slate-300 px-4 py-3 text-2xl">
+                <div className="flex h-20 w-20 items-center justify-center rounded-2xl border border-dashed border-slate-300 bg-white px-4 py-3 text-2xl">
                   <FiPlus />
                 </div>
               </div>
               <div className="flex w-full space-x-4 pt-2 text-center">
-                <div className="w-1/2 rounded-2xl border border-purple-900 px-6 py-3">
+                <div className="w-1/2 rounded-2xl border border-purple-900 bg-white px-6 py-3">
                   Preview
                 </div>
                 <div className="w-1/2 rounded-2xl border bg-purple-900 px-6 py-3 text-white">
