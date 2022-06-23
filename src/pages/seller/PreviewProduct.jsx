@@ -104,7 +104,7 @@ export default function PreviewProductPage() {
                 <div className="rounded-2xl bg-white p-4 shadow-md">
                   <div className="flex items-center space-x-5">
                     <img
-                      src="../assets/images/profile.png"
+                      src="../assets/images/seller_profile.png"
                       alt=""
                       className="h-12 w-12 rounded-xl object-cover"
                     />

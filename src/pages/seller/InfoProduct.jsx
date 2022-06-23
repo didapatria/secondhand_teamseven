@@ -33,7 +33,12 @@ export default function InfoProductPage() {
         </div>
       </div>
       <div className="mt-6 flex justify-center md:mt-10">
-        <div className="w-11/12 md:flex md:w-full md:justify-center">
+        <div className="hidden md:block md:w-3/5">
+          <Link to="/">
+            <FiArrowLeft className="text-2xl" />
+          </Link>
+        </div>
+        <div className="absolute inset-0 inset-y-auto -z-10 mx-auto w-11/12 md:flex md:w-full md:justify-center">
           <div className="md:w-2/5">
             <form className="space-y-4">
               <div className="space-y-1">
