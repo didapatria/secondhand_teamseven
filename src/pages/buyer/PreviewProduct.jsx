@@ -8,7 +8,7 @@ import {
 } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
-export default function PreviewProductPage() {
+export default function ProductPage() {
   return (
     <div>
       {/* Navbar */}
@@ -88,21 +88,13 @@ export default function PreviewProductPage() {
                     </div>
                     <div>Rp 250.000</div>
                   </div>
-                  <div className="hidden space-y-4 md:block">
+                  <div className="hidden md:block">
                     <div className="flex w-full">
                       <Link
                         to="/seller/list-product"
                         className="w-full rounded-2xl border bg-purple-900 px-6 py-3 text-center font-medium text-white"
                       >
-                        Terbitkan
-                      </Link>
-                    </div>
-                    <div className="flex w-full">
-                      <Link
-                        to="/seller/info-product"
-                        className="w-full rounded-2xl border border-purple-900 bg-white px-6 py-3 text-center font-medium"
-                      >
-                        Edit
+                        Saya Tertarik dan ingin Nego
                       </Link>
                     </div>
                   </div>
@@ -152,7 +144,7 @@ export default function PreviewProductPage() {
               to="/seller/list-product"
               className="flex w-11/12 items-center justify-center space-x-2 rounded-xl bg-purple-900 px-6 py-3 text-white shadow-lg shadow-purple-900/50"
             >
-              Terbitkan
+              Saya Tertarik dan ingin Nego
             </Link>
           </div>
         </div>
