@@ -7,6 +7,7 @@ import InfoProductPage from "./pages/seller/InfoProduct";
 import PreviewProductPage from "./pages/seller/PreviewProduct";
 import ListProductPage from "./pages/seller/ListProduct";
 import InfoBidderPage from "./pages/seller/InfoBidder";
+import ProductPage from "./pages/buyer/PreviewProduct";
 import NotFound from "./pages/NotFound";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         />
         <Route path="/seller/list-product" element={<ListProductPage />} />
         <Route path="/seller/info-bidder" element={<InfoBidderPage />} />
+        <Route path="/buyer/preview-product" element={<ProductPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
