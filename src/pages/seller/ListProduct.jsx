@@ -67,7 +67,7 @@ export default function ListProductPage() {
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-5">
                 <img
-                  src="../assets/images/profile.png"
+                  src="../assets/images/seller_profile.png"
                   alt=""
                   className="h-12 w-12 rounded-xl object-cover"
                 />
