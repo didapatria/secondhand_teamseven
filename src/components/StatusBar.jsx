@@ -1,9 +1,9 @@
 import {
-  MdBluetooth,
-  MdVibration,
-  MdSignalWifi4Bar,
-  MdSignalCellular4Bar,
   MdBatteryFull,
+  MdBluetooth,
+  MdSignalCellular4Bar,
+  MdSignalWifi4Bar,
+  MdVibration,
 } from "react-icons/md";
 
 export default function StatusBar() {

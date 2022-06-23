@@ -30,7 +30,7 @@ export default function Carousel() {
     <div>
       <Slider {...settings}>
         <div className="md:my-10">
-          <div className="relative mx-0 flex bg-gradient-to-b from-orange-200 to-orange-200/0 px-4 py-12 md:mx-20 md:rounded-3xl md:bg-orange-200 md:px-20">
+          <div className="relative mx-0 flex bg-gradient-to-b from-orange-200 to-orange-200/0 px-4 pt-32 pb-40 md:mx-20 md:rounded-3xl md:bg-orange-200 md:py-12 md:px-20">
             <div className="h-40 md:w-2/5">
               <div className="pb-2 text-xl font-bold md:text-4xl">
                 Bulan Ramadhan Banyak diskon!
