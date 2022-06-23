@@ -23,7 +23,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="fixed inset-x-1/2 bottom-7 flex justify-center">
+      <div className="fixed inset-x-0 bottom-7 flex justify-center">
         <Link
           to="/seller/info-product"
           className="flex w-fit items-center space-x-2 rounded-xl bg-purple-900 px-6 py-3 text-white shadow-lg shadow-purple-900/50"
