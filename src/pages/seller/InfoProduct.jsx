@@ -77,12 +77,18 @@ export default function InfoProductPage() {
                 </div>
               </div>
               <div className="flex w-full space-x-4 pt-2 text-center">
-                <div className="w-1/2 rounded-2xl border border-purple-900 bg-white px-6 py-3">
+                <Link
+                  to="/seller/preview-product"
+                  className="w-1/2 rounded-2xl border border-purple-900 bg-white px-6 py-3"
+                >
                   Preview
-                </div>
-                <div className="w-1/2 rounded-2xl border bg-purple-900 px-6 py-3 text-white">
+                </Link>
+                <Link
+                  to="/seller/list-product"
+                  className="w-1/2 rounded-2xl border bg-purple-900 px-6 py-3 text-white"
+                >
                   Terbitkan
-                </div>
+                </Link>
               </div>
             </form>
           </div>
