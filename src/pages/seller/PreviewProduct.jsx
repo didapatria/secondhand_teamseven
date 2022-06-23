@@ -141,6 +141,14 @@ export default function PreviewProductPage() {
               </div>
             </div>
           </div>
+          <div className="fixed inset-x-0 bottom-6 flex justify-center md:hidden">
+            <Link
+              to="/seller/list-product"
+              className="Terbitkan flex w-11/12 items-center justify-center space-x-2 rounded-xl bg-purple-900 px-6 py-3 text-white shadow-lg shadow-purple-900/50"
+            >
+              Terbitkan
+            </Link>
+          </div>
         </div>
       </div>
     </div>
