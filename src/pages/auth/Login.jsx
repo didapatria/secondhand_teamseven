@@ -1,4 +1,4 @@
-import FormAuth from "../../components/auth/FormAuth";
+import FormLogin from "../../components/auth/FormLogin";
 
 export default function LoginPage() {
   return (
@@ -13,7 +13,7 @@ export default function LoginPage() {
         />
         <div className="flex-1">
           <div className="flex h-screen items-center justify-center">
-            <FormAuth />
+            <FormLogin />
           </div>
         </div>
       </div>

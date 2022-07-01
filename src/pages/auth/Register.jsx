@@ -1,4 +1,4 @@
-import RegistAuth from "../../components/auth/RegistAuth";
+import FormRegist from "../../components/auth/FormRegist";
 
 export default function RegisterPage() {
   return (
@@ -13,7 +13,7 @@ export default function RegisterPage() {
         />
         <div className="flex-1">
           <div className="flex h-screen items-center justify-center">
-            <RegistAuth />
+            <FormRegist />
           </div>
         </div>
       </div>
