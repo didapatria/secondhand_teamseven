@@ -12,13 +12,19 @@ const register = (username, email, password) => {
 
 const login = (username, password) => {
   return axios
-    .post(`${API_URL}login`, {
-      username,
-      password,
-    })
+    .post(
+      `${API_URL}login`,
+      {
+        username,
+        password,
+      },
+      { headers: { "content-type": "multipart/form-data" } },
+    )
     .then((response) => {
       if (response.data.accessToken) {
         localStorage.setItem("user", JSON.stringify(response.data));
+        console.log(response, "local");
+        // console.log(response.data, "data local");
       }
 
       return response.data;
