@@ -16,59 +16,22 @@ import { Link } from "react-router-dom";
 
 import StatusBar from "../../components/StatusBar";
 import Card from "../../components/Card";
+import Navbar from "../../components/Navbar";
 
 export default function ListProductPage() {
+  const title = "Daftar Jual Saya";
+
   const [isNavOpen, setIsNavOpen] = useState(false);
+
   return (
     <div>
       <div className="mx-auto w-11/12">
         <StatusBar />
       </div>
-      {/* Navbar */}
-      <div className="flex w-full justify-center px-0 py-2 md:relative md:py-5 md:shadow-lg">
-        <div className="relative w-11/12 md:container md:h-12">
-          {/* Mobile */}
-          <div className="flex items-center space-x-4 md:hidden">
-            <div className="rounded-2xl bg-white px-3 py-3">
-              <FiMenu
-                className="text-2xl"
-                onClick={() => setIsNavOpen((prev) => !prev)}
-              />
-            </div>
-            <div className="text-xl font-bold">Daftar Jual Saya</div>
-          </div>
-          {/* Desktop */}
-          <div className="hidden md:flex md:justify-between">
-            <div className="flex h-12 w-5/12 items-center justify-between space-x-6">
-              <Link to="/" className="h-8 w-24 bg-purple-900" />
-              <div className="w-10/12 flex-1">
-                <form>
-                  <div className="relative">
-                    <input
-                      type="search"
-                      name=""
-                      id=""
-                      placeholder="Cari di sini ..."
-                      className="flex w-full items-center justify-between space-x-4 rounded-2xl px-6 py-3 md:bg-slate-100"
-                    />
-                    <FiSearch className="absolute inset-y-3 right-6 text-2xl text-slate-400" />
-                  </div>
-                </form>
-              </div>
-            </div>
-            <div className="flex items-center space-x-6 text-2xl">
-              <FiList />
-              <FiBell />
-              <FiUser />
-            </div>
-          </div>
-        </div>
-      </div>
+      <Navbar isList title={title} />
       <div className="flex justify-center md:mt-10">
         <div className="w-11/12 space-y-8 md:w-8/12">
-          <div className="hidden text-xl font-bold md:block">
-            Daftar Jual Saya
-          </div>
+          <div className="hidden text-xl font-bold md:block">{title}</div>
           <div className="w-full rounded-2xl p-5 shadow-md">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-5">

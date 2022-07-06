@@ -2,36 +2,17 @@ import { FiArrowLeft, FiPlus } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
 import StatusBar from "../../components/StatusBar";
+import Navbar from "../../components/Navbar";
 
 export default function InfoProductPage() {
+  const title = "Lengkapi Detail Produk";
+
   return (
     <div>
       <div className="mx-auto w-11/12">
         <StatusBar />
       </div>
-      {/* Navbar */}
-      <div className="flex w-full justify-center px-0 py-4 md:relative md:py-5 md:shadow-lg">
-        <div className="relative w-11/12 md:container md:h-12">
-          {/* Mobile */}
-          <div className="flex items-center space-x-4 md:hidden">
-            <Link to="/">
-              <FiArrowLeft className="text-2xl" />
-            </Link>
-            <div className="absolute inset-0 -z-10 text-center font-medium">
-              Lengkapi Detail Produk
-            </div>
-          </div>
-          {/* Desktop */}
-          <div className="hidden md:flex md:justify-between">
-            <div className="flex h-12 items-center justify-between space-x-6">
-              <Link to="/" className="h-8 w-24 bg-purple-900" />
-              <div className="absolute inset-0 inset-y-auto -z-10 text-center font-medium">
-                Lengkapi Detail Produk
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Navbar isInfo title={title} />
       <div className="mt-6 flex justify-center md:mt-10">
         <div className="hidden md:block md:w-3/5">
           <Link to="/">
