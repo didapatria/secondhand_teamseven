@@ -9,7 +9,7 @@ import Card from "../components/Card";
 export default function Home() {
   return (
     <div className="">
-      <Navbar />
+      <Navbar isHome />
       <div className="space-y-8 md:space-y-10">
         <div className="relative mt-0 md:mt-8">
           <Carousel />
