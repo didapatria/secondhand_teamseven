@@ -10,9 +10,11 @@ import InfoBidderPage from "./pages/seller/InfoBidder";
 import ProductPage from "./pages/buyer/PreviewProduct";
 import NotFound from "./pages/NotFound";
 
+import { history } from "./helpers/history";
+
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter history={history}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<LoginPage />} />

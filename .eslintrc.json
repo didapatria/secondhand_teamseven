@@ -19,8 +19,11 @@
   },
   "plugins": ["react", "prettier"],
   "rules": {
-    "default-param-last": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "default-param-last": ["off"],
+    "import/prefer-default-export": ["off"],
+    "no-shadow": ["off"],
+    "no-underscore-dangle": ["off"],
+    "no-unused-vars": ["off"],
     "quotes": [
       "error",
       "double",
@@ -28,9 +31,11 @@
         "avoidEscape": true
       }
     ],
-    "react/jsx-uses-react": ["off"],
-    "react/react-in-jsx-scope": ["off"],
+    "react/destructuring-assignment": ["off"],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/jsx-props-no-spreading": ["warn"],
-    "no-shadow": "off"
+    "react/prop-types": ["off"],
+    "react/jsx-uses-react": ["off"],
+    "react/react-in-jsx-scope": ["off"]
   }
 }

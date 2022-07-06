@@ -1,18 +1,22 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import {
   // FiArrowLeft,
-  // FiBell,
-  // FiList,
+  FiBell,
+  FiList,
   FiLogIn,
   FiMenu,
   FiSearch,
   FiX,
-  // FiUser,
 } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
+import Account from "./dropdowns/Account";
+
 export default function Navbar() {
   const [isNavOpen, setIsNavOpen] = useState(false);
+
+  const { user: currentUser } = useSelector((state) => state.auth);
 
   return (
     <div className="absolute z-10 flex w-full justify-center px-0 py-10 md:relative md:py-5 md:shadow-lg">
@@ -69,30 +73,33 @@ export default function Navbar() {
               Title
             </div> */}
           </div>
-          <Link
-            to="/login"
-            className="hidden items-center space-x-2 rounded-2xl bg-purple-900 px-4 py-3 text-white hover:bg-white hover:text-purple-900 hover:shadow-lg hover:shadow-purple-900/50 md:flex"
-          >
-            <FiLogIn className="text-xl" />
-            <div>Masuk</div>
-          </Link>
-          {/* <div className="flex items-center space-x-6 text-2xl">
-            <FiList />
-            <FiBell />
-            <FiUser />
-          </div> */}
+          {currentUser ? (
+            <div className="flex items-center space-x-6 text-2xl">
+              <Link to="/seller/list-product">
+                <FiList />
+              </Link>
+              <FiBell />
+              <Account />
+            </div>
+          ) : (
+            <Link
+              to="/login"
+              className="hidden items-center space-x-2 rounded-2xl bg-purple-900 px-4 py-3 text-white hover:bg-white hover:text-purple-900 hover:shadow-lg hover:shadow-purple-900/50 md:flex"
+            >
+              <FiLogIn className="text-xl" />
+              <div>Masuk</div>
+            </Link>
+          )}
         </div>
       </div>
       {/* Mobile-Sidebar */}
       <div
-        className={
-          isNavOpen ? "absolute inset-0 h-screen bg-black/60" : "hidden"
-        }
+        className={isNavOpen ? "fixed inset-0 h-screen bg-black/60" : "hidden"}
       >
         <div
           className={
             isNavOpen
-              ? "absolute inset-y-0 left-0 z-20 h-screen w-1/2 bg-white py-9 px-4"
+              ? "fixed inset-y-0 left-0 z-20 h-screen w-1/2 bg-white py-9 px-4"
               : "hidden"
           }
         >
@@ -102,30 +109,28 @@ export default function Navbar() {
           />
           <div className="space-y-5">
             <div className="font-bold">Second Hand</div>
-            <Link
-              to="/login"
-              className="flex w-fit items-center space-x-2 rounded-2xl bg-purple-900 px-4 py-3 text-white hover:bg-white hover:text-purple-900 hover:shadow-lg hover:shadow-purple-900/50"
-            >
-              <FiLogIn className="text-xl" />
-              <div>Masuk</div>
-            </Link>
-            {/* <div className="space-y-4">
-            <div>
-              <Link to="/seller/notification">Notifikasi</Link>
-            </div>
-            <div>
-              <Link to="/seller/list-product">Daftar Jual</Link>
-            </div>
-            <div>
-              <Link to="/seller/account">Akun Saya</Link>
-            </div>
-            <div>
-              <Link to="/buyer/notification">Notifikasi</Link>
-            </div>
-            <div>
-              <Link to="/buyer/account">Akun Saya</Link>
-            </div>
-          </div> */}
+
+            {currentUser ? (
+              <div className="space-y-4">
+                <div>
+                  <Link to="/notification">Notifikasi</Link>
+                </div>
+                <div>
+                  <Link to="/seller/list-product">Daftar Jual</Link>
+                </div>
+                <div>
+                  <Link to="/account">Akun Saya</Link>
+                </div>
+              </div>
+            ) : (
+              <Link
+                to="/login"
+                className="flex w-fit items-center space-x-2 rounded-2xl bg-purple-900 px-4 py-3 text-white hover:bg-white hover:text-purple-900 hover:shadow-lg hover:shadow-purple-900/50"
+              >
+                <FiLogIn className="text-xl" />
+                <div>Masuk</div>
+              </Link>
+            )}
           </div>
         </div>
       </div>

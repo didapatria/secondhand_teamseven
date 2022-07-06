@@ -131,14 +131,12 @@ export default function ListProductPage() {
       </div>
       {/* Mobile-Sidebar */}
       <div
-        className={
-          isNavOpen ? "absolute inset-0 h-screen bg-black/60" : "hidden"
-        }
+        className={isNavOpen ? "fixed inset-0 h-screen bg-black/60" : "hidden"}
       >
         <div
           className={
             isNavOpen
-              ? "absolute inset-y-0 left-0 z-20 h-screen w-1/2 bg-white py-9 px-4"
+              ? "fixed inset-y-0 left-0 z-20 h-screen w-1/2 bg-white py-9 px-4"
               : "hidden"
           }
         >
