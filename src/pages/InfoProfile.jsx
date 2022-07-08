@@ -62,7 +62,7 @@ export default function InfoProfilePage() {
                 />
               </div>
               <div className="text-center">
-                <div className="rounded-2xl border bg-purple-900 px-6 py-3 text-white">
+                <div className="rounded-2xl border bg-purple-900 px-6 py-3 text-white hover:bg-white hover:text-purple-900 hover:shadow-lg hover:shadow-purple-900/50">
                   Simpan
                 </div>
               </div>

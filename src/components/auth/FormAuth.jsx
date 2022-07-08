@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { FiArrowLeft, FiBell, FiEye, FiX } from "react-icons/fi";
+import { FiArrowLeft, FiBell, FiEye, FiEyeOff, FiX } from "react-icons/fi";
 import { Link, Navigate } from "react-router-dom";
 
 import Form from "react-validation/build/form";
@@ -33,11 +33,11 @@ const validEmail = (value) => {
   return null;
 };
 
-const vusername = (value) => {
+const vfullName = (value) => {
   if (value.length < 3 || value.length > 20) {
     return (
       <div className="mt-2 rounded border-0 bg-red-500 px-3 py-2 text-xs text-white">
-        The username must be between 3 and 20 characters.
+        The fullName must be between 3 and 20 characters.
       </div>
     );
   }
@@ -59,9 +59,10 @@ export default function FormAuth(props) {
   const form = useRef();
   const checkBtn = useRef();
 
-  const [username, setUsername] = useState("");
+  const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordType, setPasswordType] = useState("password");
   const [loading, setLoading] = useState(false);
   const [showAlert, setShowAlert] = useState(true);
   const [successful, setSuccessful] = useState(false);
@@ -71,9 +72,9 @@ export default function FormAuth(props) {
 
   const dispatch = useDispatch();
 
-  const onChangeUsername = (e) => {
-    const username = e.target.value;
-    setUsername(username);
+  const onChangeFullName = (e) => {
+    const fullName = e.target.value;
+    setFullName(fullName);
   };
 
   const onChangeEmail = (e) => {
@@ -86,16 +87,23 @@ export default function FormAuth(props) {
     setPassword(password);
   };
 
+  const togglePassword = () => {
+    if (passwordType === "password") {
+      setPasswordType("text");
+      return;
+    }
+    setPasswordType("password");
+  };
+
   const handleLogin = (e) => {
     e.preventDefault();
 
     setLoading(true);
-    // setSuccessful(false);
 
     form.current.validateAll();
 
     if (checkBtn.current.context._errors.length === 0) {
-      dispatch(login(username, password))
+      dispatch(login(email, password))
         .then(() => {
           props.history.push("/");
           window.location.reload();
@@ -116,7 +124,7 @@ export default function FormAuth(props) {
     form.current.validateAll();
 
     if (checkBtn.current.context._errors.length === 0) {
-      dispatch(register(username, email, password))
+      dispatch(register(fullName, email, password))
         .then(() => {
           setSuccessful(true);
         })
@@ -149,54 +157,41 @@ export default function FormAuth(props) {
             <>
               <div className="space-y-4">
                 {props.isRegist ? (
-                  <>
-                    <div className="space-y-1">
-                      <div>Nama</div>
-                      <Input
-                        type="text"
-                        className="w-full rounded-2xl border border-slate-300 px-4 py-3"
-                        placeholder="Contoh: johndee"
-                        id="username"
-                        name="username"
-                        value={username}
-                        onChange={onChangeUsername}
-                        validations={[required, vusername]}
-                      />
-                    </div>
-                    <div className="space-y-1">
-                      <div>Email</div>
-                      <Input
-                        type="email"
-                        className="w-full rounded-2xl border border-slate-300 px-4 py-3"
-                        placeholder="Contoh: johndee"
-                        id="email"
-                        name="email"
-                        value={email}
-                        onChange={onChangeEmail}
-                        validations={[required, validEmail]}
-                      />
-                    </div>
-                  </>
-                ) : (
                   <div className="space-y-1">
-                    <div>Username</div>
+                    <div>Nama</div>
                     <Input
                       type="text"
                       className="w-full rounded-2xl border border-slate-300 px-4 py-3"
-                      placeholder="Contoh: johndee"
-                      id="username"
-                      name="username"
-                      value={username}
-                      onChange={onChangeUsername}
-                      validations={[required]}
+                      placeholder="Nama Lengkap"
+                      id="fullName"
+                      name="fullName"
+                      value={fullName}
+                      onChange={onChangeFullName}
+                      validations={[required, vfullName]}
                     />
                   </div>
-                )}
+                ) : null}
+
+                <div className="space-y-1">
+                  <div>Email</div>
+                  <Input
+                    type="email"
+                    className="w-full rounded-2xl border border-slate-300 px-4 py-3"
+                    placeholder="Contoh: johndee@gmail.com"
+                    id="email"
+                    name="email"
+                    value={email}
+                    onChange={onChangeEmail}
+                    validations={
+                      props.isRegist ? [required, validEmail] : [required]
+                    }
+                  />
+                </div>
                 <div className="space-y-1">
                   <div>Password</div>
                   <div className="relative">
                     <Input
-                      type="password"
+                      type={passwordType}
                       className="w-full rounded-2xl border border-slate-300 px-4 py-3"
                       placeholder="Masukkan password"
                       id="password"
@@ -207,7 +202,13 @@ export default function FormAuth(props) {
                         props.isRegist ? [required, vpassword] : [required]
                       }
                     />
-                    <FiEye className="absolute inset-y-3 right-4 text-2xl text-slate-400" />
+                    <button type="button" onClick={togglePassword}>
+                      {passwordType === "password" ? (
+                        <FiEyeOff className="absolute inset-y-3 right-4 text-2xl text-slate-400" />
+                      ) : (
+                        <FiEye className="absolute inset-y-3 right-4 text-2xl text-slate-400" />
+                      )}
+                    </button>
                   </div>
                 </div>
               </div>

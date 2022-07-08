@@ -50,7 +50,7 @@ export default function PreviewProductPage() {
                     <div className="flex w-full">
                       <Link
                         to="/seller/list-product"
-                        className="w-full rounded-2xl border bg-purple-900 px-6 py-3 text-center font-medium text-white"
+                        className="w-full rounded-2xl border bg-purple-900 px-6 py-3 text-center font-medium text-white hover:bg-white hover:text-purple-900 hover:shadow-lg hover:shadow-purple-900/50"
                       >
                         Terbitkan
                       </Link>
@@ -58,7 +58,7 @@ export default function PreviewProductPage() {
                     <div className="flex w-full">
                       <Link
                         to="/seller/info-product"
-                        className="w-full rounded-2xl border border-purple-900 bg-white px-6 py-3 text-center font-medium"
+                        className="w-full rounded-2xl border border-purple-900 bg-white px-6 py-3 text-center font-medium hover:bg-purple-900 hover:text-white hover:shadow-lg hover:shadow-purple-900/50"
                       >
                         Edit
                       </Link>
@@ -108,7 +108,7 @@ export default function PreviewProductPage() {
           <div className="fixed inset-x-0 bottom-6 flex justify-center md:hidden">
             <Link
               to="/seller/list-product"
-              className="flex w-11/12 items-center justify-center space-x-2 rounded-xl bg-purple-900 px-6 py-3 text-white shadow-lg shadow-purple-900/50"
+              className="flex w-11/12 items-center justify-center space-x-2 rounded-xl bg-purple-900 px-6 py-3 text-white shadow-lg shadow-purple-900/50 hover:bg-white hover:text-purple-900"
             >
               Terbitkan
             </Link>

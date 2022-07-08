@@ -1,20 +1,18 @@
 import {
-  REGISTER_SUCCESS,
-  REGISTER_FAIL,
-  LOGIN_SUCCESS,
-  LOGIN_FAIL,
-  LOGOUT,
+  PRODUCTS_FAIL,
+  PRODUCTS_SUCCESS,
+  PRODUCT_FAIL,
+  PRODUCT_SUCCESS,
   SET_MESSAGE,
-  REFRESH_TOKEN,
 } from "./types";
 
-import AuthService from "../services/auth.service";
+import ProductService from "../services/product.service";
 
-export const register = (fullName, email, password) => (dispatch) => {
-  return AuthService.register(fullName, email, password).then(
+export const products = (search, page, size) => (dispatch) => {
+  return ProductService.products(search, page, size).then(
     (response) => {
       dispatch({
-        type: REGISTER_SUCCESS,
+        type: PRODUCTS_SUCCESS,
       });
 
       dispatch({
@@ -33,7 +31,7 @@ export const register = (fullName, email, password) => (dispatch) => {
         error.toString();
 
       dispatch({
-        type: REGISTER_FAIL,
+        type: PRODUCTS_FAIL,
       });
 
       dispatch({
@@ -46,12 +44,16 @@ export const register = (fullName, email, password) => (dispatch) => {
   );
 };
 
-export const login = (email, password) => (dispatch) => {
-  return AuthService.login(email, password).then(
-    (data) => {
+export const product = (id) => (dispatch) => {
+  return ProductService.product(id).then(
+    (response) => {
       dispatch({
-        type: LOGIN_SUCCESS,
-        payload: { user: data },
+        type: PRODUCT_SUCCESS,
+      });
+
+      dispatch({
+        type: SET_MESSAGE,
+        payload: response.data.message,
       });
 
       return Promise.resolve();
@@ -65,7 +67,7 @@ export const login = (email, password) => (dispatch) => {
         error.toString();
 
       dispatch({
-        type: LOGIN_FAIL,
+        type: PRODUCT_FAIL,
       });
 
       dispatch({
@@ -76,19 +78,4 @@ export const login = (email, password) => (dispatch) => {
       return Promise.reject();
     },
   );
-};
-
-export const logout = () => (dispatch) => {
-  AuthService.logout();
-
-  dispatch({
-    type: LOGOUT,
-  });
-};
-
-export const refreshToken = (accessToken) => (dispatch) => {
-  dispatch({
-    type: REFRESH_TOKEN,
-    payload: accessToken,
-  });
 };

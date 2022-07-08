@@ -58,10 +58,10 @@ export default function InfoBidderPage() {
                 <div className="space-y-4 md:divide-y">
                   <div className="flex justify-end">
                     <div className="flex w-full space-x-4 md:w-3/5">
-                      <div className="w-1/2 rounded-2xl border border-purple-900 bg-white px-6 py-2 text-center">
+                      <div className="w-1/2 rounded-2xl border border-purple-900 bg-white px-6 py-2 text-center hover:bg-purple-900 hover:text-white hover:shadow-lg hover:shadow-purple-900/50">
                         Tolak
                       </div>
-                      <div className="w-1/2 rounded-2xl border bg-purple-900 px-6 py-2 text-center text-white">
+                      <div className="w-1/2 rounded-2xl border bg-purple-900 px-6 py-2 text-center text-white hover:bg-white hover:text-purple-900 hover:shadow-lg hover:shadow-purple-900/50">
                         Terima
                       </div>
                     </div>

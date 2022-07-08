@@ -1,14 +1,12 @@
-import axios from "axios";
+import api from "./api";
 import authHeader from "./auth-header";
 
-const API_URL = "https://apisecondhand.herokuapp.com/api/";
-
 const getPublicContent = () => {
-  return axios.get(`${API_URL}users`);
+  return api.get("users");
 };
 
 const getUserBoard = () => {
-  return axios.get(`${API_URL}user/check`, { headers: authHeader() });
+  return api.get("user/check", { headers: authHeader() });
 };
 
 export default {

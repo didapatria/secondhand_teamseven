@@ -1,36 +1,31 @@
-import axios from "axios";
+import api from "./api";
+import TokenService from "./token.service";
 
-const API_URL = "https://apisecondhand.herokuapp.com/api/";
-
-const register = (username, email, password) => {
-  return axios.post(`${API_URL}register`, {
-    username,
+const register = (fullName, email, password) => {
+  return api.post("register", {
+    fullName,
     email,
     password,
   });
 };
 
-const login = (username, password) => {
-  return axios
-    .post(
-      `${API_URL}login`,
-      {
-        username,
-        password,
-      },
-      { headers: { "content-type": "multipart/form-data" } },
-    )
+const login = (email, password) => {
+  return api
+    .post("login", {
+      email,
+      password,
+    })
     .then((response) => {
-      if (response.data.accessToken) {
-        localStorage.setItem("user", JSON.stringify(response.data));
+      if (response.data.data.accessToken) {
+        TokenService.setUser(response.data.data);
       }
 
-      return response.data;
+      return response.data.data;
     });
 };
 
 const logout = () => {
-  localStorage.removeItem("user");
+  TokenService.removeUser();
 };
 
 export default {
