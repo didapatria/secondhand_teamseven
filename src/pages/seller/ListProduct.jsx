@@ -92,37 +92,6 @@ export default function ListProductPage() {
           </div>
         </div>
       </div>
-      {/* Mobile-Sidebar */}
-      <div
-        className={isNavOpen ? "fixed inset-0 h-screen bg-black/60" : "hidden"}
-      >
-        <div
-          className={
-            isNavOpen
-              ? "fixed inset-y-0 left-0 z-20 h-screen w-1/2 bg-white py-9 px-4"
-              : "hidden"
-          }
-        >
-          <FiX
-            className="absolute top-9 right-6 text-2xl"
-            onClick={() => setIsNavOpen(false)}
-          />
-          <div className="space-y-5">
-            <div className="font-bold">Second Hand</div>
-            <div className="space-y-4">
-              <div>
-                <Link to="/seller/notification">Notifikasi</Link>
-              </div>
-              <div>
-                <Link to="/seller/list-product">Daftar Jual</Link>
-              </div>
-              <div>
-                <Link to="/seller/account">Akun Saya</Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }

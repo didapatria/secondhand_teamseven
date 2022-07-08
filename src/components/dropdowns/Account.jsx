@@ -58,7 +58,7 @@ export default function Account() {
         }
       >
         <div className="space-y-4 text-base">
-          <div className="capitalize">{currentUser.data.username}</div>
+          <div>{currentUser.email}</div>
           <div>
             <Link to="/info-profile">Ubah Akun</Link>
           </div>

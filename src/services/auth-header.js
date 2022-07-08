@@ -1,5 +1,7 @@
+import TokenService from "./token.service";
+
 export default function authHeader() {
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = TokenService.getUser();
 
   if (user && user.accessToken) {
     // For Spring Boot back-end

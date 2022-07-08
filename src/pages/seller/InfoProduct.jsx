@@ -65,13 +65,13 @@ export default function InfoProductPage() {
               <div className="flex w-full space-x-4 pt-2 text-center">
                 <Link
                   to="/seller/preview-product"
-                  className="w-1/2 rounded-2xl border border-purple-900 bg-white px-6 py-3"
+                  className="w-1/2 rounded-2xl border border-purple-900 bg-white px-6 py-3 hover:bg-purple-900 hover:text-white hover:shadow-lg hover:shadow-purple-900/50"
                 >
                   Preview
                 </Link>
                 <Link
                   to="/seller/list-product"
-                  className="w-1/2 rounded-2xl border bg-purple-900 px-6 py-3 text-white"
+                  className="w-1/2 rounded-2xl border bg-purple-900 px-6 py-3 text-white hover:bg-white hover:text-purple-900 hover:shadow-lg hover:shadow-purple-900/50"
                 >
                   Terbitkan
                 </Link>

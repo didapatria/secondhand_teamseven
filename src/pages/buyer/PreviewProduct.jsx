@@ -47,7 +47,7 @@ export default function ProductPage() {
                   </div>
                   <div className="hidden md:block">
                     <div className="flex w-full">
-                      <div className="w-full rounded-2xl border bg-purple-900 px-6 py-3 text-center font-medium text-white">
+                      <div className="w-full rounded-2xl border bg-purple-900 px-6 py-3 text-center font-medium text-white hover:bg-white hover:text-purple-900 hover:shadow-lg hover:shadow-purple-900/50">
                         Saya Tertarik dan ingin Nego
                       </div>
                     </div>
@@ -94,7 +94,7 @@ export default function ProductPage() {
             </div>
           </div>
           <div className="fixed inset-x-0 bottom-6 flex justify-center md:hidden">
-            <div className="flex w-11/12 items-center justify-center space-x-2 rounded-xl bg-purple-900 px-6 py-3 text-white shadow-lg shadow-purple-900/50">
+            <div className="flex w-11/12 items-center justify-center space-x-2 rounded-xl bg-purple-900 px-6 py-3 text-white hover:bg-white hover:text-purple-900 hover:shadow-lg hover:shadow-purple-900/50">
               Saya Tertarik dan ingin Nego
             </div>
           </div>

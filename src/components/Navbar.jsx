@@ -107,7 +107,7 @@ export default function Navbar(props) {
           {props.isInfo ? null : (
             <div>
               {currentUser ? (
-                <div className="flex items-center space-x-6 text-2xl">
+                <div className="flex h-full items-center space-x-6 text-2xl">
                   <Link to="/seller/list-product">
                     <FiList />
                   </Link>
