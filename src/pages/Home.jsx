@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { FiPlus } from "react-icons/fi";
 import { Link } from "react-router-dom";
@@ -12,13 +13,12 @@ export default function Home() {
 
   const getProducts = async () => {
     try {
-      const page = 1;
+      const page = 0;
       const size = 5;
-      const dataProducts = await fetch(
-        `https://apisecondhand.herokuapp.com/api/products?products?page=${page}&size=${size}`,
+      const dataProducts = await axios.get(
+        `https://apisecondhand.herokuapp.com/api/products?page=${page}&size=${size}`,
       );
-      setProducts(await dataProducts.json());
-      console.log(dataProducts, "data products");
+      setProducts(await dataProducts.data.data);
     } catch (error) {
       console.log(error);
     }

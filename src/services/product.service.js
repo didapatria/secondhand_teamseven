@@ -1,13 +1,11 @@
-import axios from "axios";
-
-const API_URL = "https://apisecondhand.herokuapp.com/api/product";
+import api from "./api";
 
 const products = (search, page, size) => {
-  return axios.get(`${API_URL}s/search=${search}&page=${page}&size=${size}`);
+  return api.get(`s/search=${search}&page=${page}&size=${size}`);
 };
 
 const product = (id) => {
-  return axios.get(`${API_URL}/${id}/images`);
+  return api.get(`/${id}/images`);
 };
 
 export default {
