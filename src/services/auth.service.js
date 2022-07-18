@@ -11,10 +11,18 @@ const register = (fullName, email, password) => {
 
 const login = (email, password) => {
   return api
-    .post("login", {
-      email,
-      password,
-    })
+    .post(
+      "login",
+      {
+        email,
+        password,
+      },
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      },
+    )
     .then((response) => {
       if (response.data.data.accessToken) {
         TokenService.setUser(response.data.data);
