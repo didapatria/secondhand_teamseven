@@ -1,16 +1,11 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import {
-  FiBell,
   FiBox,
   FiChevronRight,
   FiDollarSign,
   FiHeart,
-  FiList,
-  FiMenu,
   FiPlus,
-  FiSearch,
-  FiUser,
-  FiX,
 } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
@@ -21,7 +16,24 @@ import Navbar from "../../components/Navbar";
 export default function ListProductPage() {
   const title = "Daftar Jual Saya";
 
-  const [isNavOpen, setIsNavOpen] = useState(false);
+  const [products, setProducts] = useState([]);
+
+  const getProducts = async () => {
+    try {
+      const page = 0;
+      const size = 5;
+      const dataProducts = await axios.get(
+        `https://apisecondhand.herokuapp.com/api/products?page=${page}&size=${size}`,
+      );
+      setProducts(await dataProducts.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getProducts();
+  }, []);
 
   return (
     <div>
@@ -87,7 +99,7 @@ export default function ListProductPage() {
                   <div className="flex justify-center">Tambah Produk</div>
                 </div>
               </Link>
-              <Card />
+              <Card data={products} />
             </div>
           </div>
         </div>
