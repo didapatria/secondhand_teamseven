@@ -1,4 +1,5 @@
 import axios from "axios";
+
 import { useEffect, useState } from "react";
 import {
   FiBox,
@@ -21,7 +22,7 @@ export default function ListProductPage() {
   const getProducts = async () => {
     try {
       const page = 0;
-      const size = 5;
+      const size = 8;
       const dataProducts = await axios.get(
         `https://apisecondhand.herokuapp.com/api/products?page=${page}&size=${size}`,
       );
@@ -100,7 +101,7 @@ export default function ListProductPage() {
                 </div>
               </Link>
               {products.map((i) => (
-                <Link to="/seller/preview-product">
+                <Link to={`/seller/preview-product/${i.id}`}>
                   <Card
                     name={i.name}
                     category={i.category.categoryName}

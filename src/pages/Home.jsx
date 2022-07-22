@@ -1,4 +1,5 @@
 import axios from "axios";
+
 import { useEffect, useState } from "react";
 import { FiPlus } from "react-icons/fi";
 import { Link } from "react-router-dom";
@@ -14,7 +15,7 @@ export default function Home() {
   const getProducts = async () => {
     try {
       const page = 0;
-      const size = 5;
+      const size = 12;
       const dataProducts = await axios.get(
         `https://apisecondhand.herokuapp.com/api/products?page=${page}&size=${size}`,
       );
@@ -41,7 +42,7 @@ export default function Home() {
         <div className="mx-auto w-11/12 md:container">
           <div className="grid grid-cols-2 gap-4 md:grid-cols-6">
             {products.map((i) => (
-              <Link to="/buyer/preview-product">
+              <Link to={`/buyer/preview-product/${i.id}`} type="submit">
                 <Card
                   name={i.name}
                   category={i.category.categoryName}

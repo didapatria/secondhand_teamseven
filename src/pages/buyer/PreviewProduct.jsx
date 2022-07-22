@@ -1,8 +1,60 @@
+import axios from "axios";
+
+import { useEffect, useState } from "react";
 import { FiChevronRight } from "react-icons/fi";
+import { useParams } from "react-router-dom";
 
 import Navbar from "../../components/Navbar";
 
 export default function ProductPage() {
+  const { id } = useParams();
+
+  const [detail, setDetail] = useState([]);
+  const [categories, setCategories] = useState([]);
+
+  const getDetail = async () => {
+    try {
+      const dataDetail = await axios.get(
+        `https://apisecondhand.herokuapp.com/api/product/${id}/detail`,
+      );
+      setDetail(await dataDetail.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getCategories = async () => {
+    try {
+      const dataCategories = await axios.get(
+        "https://apisecondhand.herokuapp.com/api/categories",
+      );
+      setCategories(await dataCategories.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getDetail();
+    getCategories();
+  }, []);
+
+  const filterCategories = categories?.filter(
+    (data) => data.id === detail?.categoryId,
+  );
+
+  const currencyFormatter = (value) => {
+    const formattedAmount = Math.trunc(value)
+      .toString()
+      .replace(/(\d)(?=(\d{3})+(?:\.\d+)?$)/g, "$1,");
+    return (
+      <>
+        <span>Rp. </span>
+        {formattedAmount}
+      </>
+    );
+  };
+
   return (
     <div>
       <Navbar isPreview />
@@ -12,7 +64,8 @@ export default function ProductPage() {
             <div className="w-full md:w-3/5">
               <div className="relative -z-10 -mt-4 md:mt-0">
                 <img
-                  src="../assets/images/product.jpg"
+                  src="../../assets/images/product.jpg"
+                  // src={detail.productImages[0].imageUrl}
                   alt=""
                   className="h-80 w-full object-cover md:h-[400px] md:rounded-2xl"
                 />
@@ -40,10 +93,12 @@ export default function ProductPage() {
                 <div className="space-y-6 rounded-2xl bg-white p-4 shadow-md">
                   <div className="space-y-2">
                     <div className="space-y-1">
-                      <div>Jam Tangan Casio</div>
-                      <div className="text-xs text-gray-400">Aksesoris</div>
+                      <div>{detail.name}</div>
+                      <div className="text-xs text-gray-400">
+                        {filterCategories[0]?.categoryName}
+                      </div>
                     </div>
-                    <div>Rp 250.000</div>
+                    <div>{currencyFormatter(detail.price)}</div>
                   </div>
                   <div className="hidden md:block">
                     <div className="flex w-full">
@@ -56,7 +111,7 @@ export default function ProductPage() {
                 <div className="rounded-2xl bg-white p-4 shadow-md">
                   <div className="flex items-center space-x-5">
                     <img
-                      src="../assets/images/seller_profile.png"
+                      src="../../assets/images/seller_profile.png"
                       alt=""
                       className="h-12 w-12 rounded-xl object-cover"
                     />
@@ -73,23 +128,7 @@ export default function ProductPage() {
             <div className="mx-auto w-11/12 rounded-2xl bg-white p-4 shadow-md md:w-full">
               <div className="space-y-4 text-sm">
                 <div className="font-medium">Deskripsi</div>
-                <div className="text-gray-400">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum. Lorem ipsum dolor sit amet,
-                  consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                  ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                  ea commodo consequat. Duis aute irure dolor in reprehenderit
-                  in voluptate velit esse cillum dolore eu fugiat nulla
-                  pariatur. Excepteur sint occaecat cupidatat non proident, sunt
-                  in culpa qui officia deserunt mollit anim id est laborum.
-                </div>
+                <div className="text-gray-400">{detail.description}</div>
               </div>
             </div>
           </div>

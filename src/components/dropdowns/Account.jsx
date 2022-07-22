@@ -8,14 +8,37 @@ import { clearMessage } from "../../actions/message";
 
 import { history } from "../../helpers/history";
 
+import UserService from "../../services/user.service";
 import EventBus from "../../common/EventBus";
 
 export default function Account() {
   const [dropdownShow, setDropdownShow] = useState(false);
 
-  const { user: currentUser } = useSelector((state) => state.auth);
+  const [user, setUser] = useState("");
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    UserService.getUserBoard().then(
+      (response) => {
+        setUser(response.data.data);
+      },
+      (error) => {
+        const _user =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
+
+        setUser(_user);
+
+        if (error.response && error.response.status === 401) {
+          EventBus.dispatch("logout");
+        }
+      },
+    );
+  }, []);
 
   const openDropdown = () => {
     setDropdownShow(true);
@@ -58,7 +81,16 @@ export default function Account() {
         }
       >
         <div className="space-y-4 text-base">
-          <div>{currentUser.email}</div>
+          <div className="flex items-center space-x-5">
+            <img
+              src="../../assets/images/seller_profile.png"
+              alt=""
+              className="h-12 w-12 rounded-full object-cover"
+            />
+            <div>
+              <div className="font-medium">{user.fullName}</div>
+            </div>
+          </div>
           <div>
             <Link to="/info-profile">Ubah Akun</Link>
           </div>

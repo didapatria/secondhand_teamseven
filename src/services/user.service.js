@@ -6,7 +6,7 @@ const getPublicContent = () => {
 };
 
 const getUserBoard = () => {
-  return api.get("user/check", { headers: authHeader() });
+  return api.get("user-info", { headers: authHeader() });
 };
 
 export default {

@@ -22,12 +22,12 @@ function App() {
         <Route path="/info-profile" element={<InfoProfilePage />} />
         <Route path="/seller/info-product" element={<InfoProductPage />} />
         <Route
-          path="/seller/preview-product"
+          path="/seller/preview-product/:id"
           element={<PreviewProductPage />}
         />
         <Route path="/seller/list-product" element={<ListProductPage />} />
         <Route path="/seller/info-bidder" element={<InfoBidderPage />} />
-        <Route path="/buyer/preview-product" element={<ProductPage />} />
+        <Route path="/buyer/preview-product/:id" element={<ProductPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
