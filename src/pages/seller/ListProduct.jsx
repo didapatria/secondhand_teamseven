@@ -99,7 +99,16 @@ export default function ListProductPage() {
                   <div className="flex justify-center">Tambah Produk</div>
                 </div>
               </Link>
-              <Card data={products} />
+              {products.map((i) => (
+                <Link to="/seller/preview-product">
+                  <Card
+                    name={i.name}
+                    category={i.category.categoryName}
+                    price={i.price}
+                    id={i.id}
+                  />
+                </Link>
+              ))}
             </div>
           </div>
         </div>
