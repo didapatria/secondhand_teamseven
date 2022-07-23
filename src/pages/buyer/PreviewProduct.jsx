@@ -44,7 +44,7 @@ export default function ProductPage() {
       <Navbar isPreview />
       <div className="flex justify-center md:mt-10">
         <div className="w-full space-y-6 md:w-8/12">
-          <div className="-space-y-16 md:flex md:space-y-0 md:space-x-8">
+          <div className="md:flex md:space-x-8">
             <div className="w-full md:w-3/5">
               <div className="relative -mt-4 md:mt-0">
                 <CarouselProduct data={detail} />

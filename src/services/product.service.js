@@ -10,7 +10,10 @@ const create = (data) => {
   formData.append("price", data.price);
   formData.append("categoryId", data.categoryId);
   formData.append("description", data.description);
-  formData.append("images", data.images.files);
+  for (let i = 0; i < data.images.length; i += 1) {
+    formData.append("images", data.images[i]);
+  }
+  formData.append("address", data.address);
 
   return api.post("product/save", formData, {
     headers: {

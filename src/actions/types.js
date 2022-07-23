@@ -14,3 +14,5 @@ export const PRODUCT_SUCCESS = "PRODUCT_SUCCESS";
 export const PRODUCT_FAIL = "PRODUCT_FAIL";
 
 export const CREATE_PRODUCT = "CREATE_PRODUCT";
+
+export const UPDATE_USER = "UPDATE_USER";

@@ -3,7 +3,8 @@ import { CREATE_PRODUCT } from "./types";
 import ProductService from "../services/product.service";
 
 export const createProduct =
-  (name, price, categoryId, description, images) => async (dispatch) => {
+  (name, price, categoryId, description, images, address) =>
+  async (dispatch) => {
     try {
       const res = await ProductService.create({
         name,
@@ -11,6 +12,7 @@ export const createProduct =
         categoryId,
         description,
         images,
+        address,
       });
 
       dispatch({

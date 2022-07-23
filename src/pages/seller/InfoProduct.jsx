@@ -16,8 +16,9 @@ export default function InfoProductPage() {
     price: "",
     categoryId: "",
     description: "",
-    images: [],
+    images: null,
     published: false,
+    address: "",
   };
 
   const [product, setProduct] = useState(initialProductState);
@@ -26,35 +27,29 @@ export default function InfoProductPage() {
 
   const dispatch = useDispatch();
 
-  const [currentFile, setCurrentFile] = useState(undefined);
-  const [selectedFiles, setSelectedFiles] = useState(undefined);
-
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setProduct({ ...product, [name]: value });
     if (name === "images") {
-      setSelectedFiles(event.target.files);
+      setProduct({ ...product, images: event.target.files });
     }
   };
 
   const saveProduct = () => {
-    const { name, price, categoryId, description, images } = product;
+    const { name, price, categoryId, description, images, address } = product;
 
-    console.log("create product", product);
-
-    const currentFile = selectedFiles[0];
-    setCurrentFile(currentFile);
-    console.log("files", currentFile);
-
-    dispatch(createProduct(name, price, categoryId, description, images))
+    dispatch(
+      createProduct(name, price, categoryId, description, images, address),
+    )
       .then((data) => {
         setProduct({
           name: data.name,
           price: data.price,
           categoryId: data.categoryId,
           description: data.description,
-          images: currentFile,
+          images: data.images,
           published: data.published,
+          address: data.address,
         });
         setSubmitted(true);
 
@@ -63,7 +58,6 @@ export default function InfoProductPage() {
       .catch((e) => {
         console.log(e);
       });
-    setSelectedFiles(undefined);
   };
 
   const getCategories = async () => {
@@ -75,10 +69,6 @@ export default function InfoProductPage() {
     } catch (error) {
       console.log(error);
     }
-  };
-
-  const newProduct = () => {
-    getCategories();
   };
 
   useEffect(() => {
@@ -103,13 +93,6 @@ export default function InfoProductPage() {
               {submitted ? (
                 <div>
                   <h4>You submitted successfully!</h4>
-                  {/* <button
-                    type="button"
-                    className="btn btn-success"
-                    onClick={newProduct}
-                  >
-                    Add
-                  </button> */}
                 </div>
               ) : (
                 <>
@@ -173,14 +156,13 @@ export default function InfoProductPage() {
                   </div>
                   <div className="space-y-1">
                     <div>Foto Produk</div>
-                    <div>{currentFile && <div>Yes</div>}</div>
                     <input
                       type="file"
                       name="images"
                       id="images"
                       required
-                      value={product.images}
                       onChange={handleInputChange}
+                      multiple
                     />
                     <div className="flex h-20 w-20 items-center justify-center rounded-2xl border border-dashed border-slate-300 bg-white px-4 py-3 text-2xl">
                       <FiPlus />

@@ -28,9 +28,7 @@ export default function CarouselProduct(props) {
         {detail.productImages
           ? detail.productImages.map((data) => (
               <img
-                src={
-                  data ? data.imageUrl : "../../assets/gif/Spinner-1s-200px.gif"
-                }
+                src={data.imageUrl}
                 alt=""
                 className="h-80 w-full object-cover md:h-[400px] md:rounded-2xl"
               />
