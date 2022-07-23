@@ -26,16 +26,25 @@ export default function InfoProductPage() {
 
   const dispatch = useDispatch();
 
+  const [currentFile, setCurrentFile] = useState(undefined);
+  const [selectedFiles, setSelectedFiles] = useState(undefined);
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setProduct({ ...product, [name]: value });
+    if (name === "images") {
+      setSelectedFiles(event.target.files);
+    }
   };
 
   const saveProduct = () => {
     const { name, price, categoryId, description, images } = product;
 
     console.log("create product", product);
-    console.log("create product aa", categoryId);
+
+    const currentFile = selectedFiles[0];
+    setCurrentFile(currentFile);
+    console.log("files", currentFile);
 
     dispatch(createProduct(name, price, categoryId, description, images))
       .then((data) => {
@@ -44,7 +53,7 @@ export default function InfoProductPage() {
           price: data.price,
           categoryId: data.categoryId,
           description: data.description,
-          images: data.images,
+          images: currentFile,
           published: data.published,
         });
         setSubmitted(true);
@@ -54,6 +63,7 @@ export default function InfoProductPage() {
       .catch((e) => {
         console.log(e);
       });
+    setSelectedFiles(undefined);
   };
 
   const getCategories = async () => {
@@ -163,6 +173,7 @@ export default function InfoProductPage() {
                   </div>
                   <div className="space-y-1">
                     <div>Foto Produk</div>
+                    <div>{currentFile && <div>Yes</div>}</div>
                     <input
                       type="file"
                       name="images"
@@ -182,14 +193,14 @@ export default function InfoProductPage() {
                     >
                       Preview
                     </Link>
-                    <button
+                    <Link
                       type="button"
-                      // to="/seller/list-product"
+                      to="/seller/list-product"
                       className="w-1/2 rounded-2xl border bg-purple-900 px-6 py-3 text-white hover:bg-white hover:text-purple-900 hover:shadow-lg hover:shadow-purple-900/50"
                       onClick={saveProduct}
                     >
                       Terbitkan
-                    </button>
+                    </Link>
                   </div>
                 </>
               )}

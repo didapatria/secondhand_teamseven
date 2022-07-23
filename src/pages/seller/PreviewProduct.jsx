@@ -10,7 +10,6 @@ export default function PreviewProductPage() {
   const { id } = useParams();
 
   const [detail, setDetail] = useState([]);
-  const [categories, setCategories] = useState([]);
 
   const getDetail = async () => {
     try {
@@ -23,25 +22,9 @@ export default function PreviewProductPage() {
     }
   };
 
-  const getCategories = async () => {
-    try {
-      const dataCategories = await axios.get(
-        "https://apisecondhand.herokuapp.com/api/categories",
-      );
-      setCategories(await dataCategories.data.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
     getDetail();
-    getCategories();
   }, []);
-
-  const filterCategories = categories?.filter(
-    (data) => data.id === detail?.categoryId,
-  );
 
   const currencyFormatter = (value) => {
     const formattedAmount = Math.trunc(value)
@@ -64,7 +47,11 @@ export default function PreviewProductPage() {
             <div className="w-full md:w-3/5">
               <div className="relative -z-10 -mt-4 md:mt-0">
                 <img
-                  src="../../assets/images/product.jpg"
+                  src={
+                    detail.productImages
+                      ? detail.productImages[0].imageUrl
+                      : "../../assets/gif/Spinner-1s-200px.gif"
+                  }
                   alt=""
                   className="h-80 w-full object-cover md:h-[400px] md:rounded-2xl"
                 />
@@ -94,7 +81,7 @@ export default function PreviewProductPage() {
                     <div className="space-y-1">
                       <div>{detail.name}</div>
                       <div className="text-xs text-gray-400">
-                        {filterCategories[0]?.categoryName}
+                        {detail.category?.categoryName}
                       </div>
                     </div>
                     <div>{currencyFormatter(detail.price)}</div>
@@ -127,10 +114,10 @@ export default function PreviewProductPage() {
                     />
                     <div>
                       <div className="font-medium">
-                        {detail.userInfo.fullName}
+                        {detail.userInfo?.fullName}
                       </div>
                       <div className="text-gray-400">
-                        {detail.userInfo.city ? detail.userInfo.city : "kota"}
+                        {detail.userInfo?.city ? detail.userInfo?.city : "kota"}
                       </div>
                     </div>
                   </div>
