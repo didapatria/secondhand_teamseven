@@ -1,81 +1,25 @@
-import {
-  PRODUCTS_FAIL,
-  PRODUCTS_SUCCESS,
-  PRODUCT_FAIL,
-  PRODUCT_SUCCESS,
-  SET_MESSAGE,
-} from "./types";
+import { CREATE_PRODUCT } from "./types";
 
 import ProductService from "../services/product.service";
 
-export const products = (search, page, size) => (dispatch) => {
-  return ProductService.products(search, page, size).then(
-    (response) => {
-      dispatch({
-        type: PRODUCTS_SUCCESS,
+export const createProduct =
+  (name, price, categoryId, description, images) => async (dispatch) => {
+    try {
+      const res = await ProductService.create({
+        name,
+        price,
+        categoryId,
+        description,
+        images,
       });
 
       dispatch({
-        type: SET_MESSAGE,
-        payload: response.data.message,
+        type: CREATE_PRODUCT,
+        payload: res.data,
       });
 
-      return Promise.resolve();
-    },
-    (error) => {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-
-      dispatch({
-        type: PRODUCTS_FAIL,
-      });
-
-      dispatch({
-        type: SET_MESSAGE,
-        payload: message,
-      });
-
-      return Promise.reject();
-    },
-  );
-};
-
-export const product = (id) => (dispatch) => {
-  return ProductService.product(id).then(
-    (response) => {
-      dispatch({
-        type: PRODUCT_SUCCESS,
-      });
-
-      dispatch({
-        type: SET_MESSAGE,
-        payload: response.data.message,
-      });
-
-      return Promise.resolve();
-    },
-    (error) => {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-
-      dispatch({
-        type: PRODUCT_FAIL,
-      });
-
-      dispatch({
-        type: SET_MESSAGE,
-        payload: message,
-      });
-
-      return Promise.reject();
-    },
-  );
-};
+      return Promise.resolve(res.data);
+    } catch (err) {
+      return Promise.reject(err);
+    }
+  };

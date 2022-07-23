@@ -214,7 +214,7 @@ export default function FormAuth(props) {
               </div>
 
               <button
-                type="button"
+                type="submit"
                 className="flex w-full justify-center rounded-2xl bg-purple-900 px-4 py-3 text-white hover:bg-white hover:text-purple-900 hover:shadow-lg hover:shadow-purple-900/50"
                 disabled={loading}
                 onClick={() => setShowAlert(true)}

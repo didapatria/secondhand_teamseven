@@ -1,14 +1,17 @@
 import api from "./api";
+import TokenService from "./token.service";
 
-const products = (search, page, size) => {
-  return api.get(`s/search=${search}&page=${page}&size=${size}`);
-};
+const create = (data) => {
+  const user = TokenService.getUser();
 
-const product = (id) => {
-  return api.get(`/${id}/images`);
+  return api.post("product/save", data, {
+    headers: {
+      Authorization: `Bearer ${user.accessToken}`,
+      "Content-Type": "multipart/form-data",
+    },
+  });
 };
 
 export default {
-  products,
-  product,
+  create,
 };
