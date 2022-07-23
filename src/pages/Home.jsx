@@ -41,13 +41,13 @@ export default function Home() {
         </div>
         <div className="mx-auto w-11/12 md:container">
           <div className="grid grid-cols-2 gap-4 md:grid-cols-6">
-            {products.map((i) => (
-              <Link to={`/buyer/preview-product/${i.id}`} type="submit">
+            {products.map((data) => (
+              <Link to={`/buyer/preview-product/${data.id}`} type="submit">
                 <Card
-                  name={i.name}
-                  category={i.category.categoryName}
-                  price={i.price}
-                  id={i.id}
+                  name={data.name}
+                  category={data.category.categoryName}
+                  price={data.price}
+                  id={data.id}
                 />
               </Link>
             ))}

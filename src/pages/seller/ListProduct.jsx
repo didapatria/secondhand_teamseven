@@ -13,11 +13,20 @@ import { Link } from "react-router-dom";
 import StatusBar from "../../components/StatusBar";
 import Card from "../../components/Card";
 import Navbar from "../../components/Navbar";
+import userService from "../../services/user.service";
 
 export default function ListProductPage() {
   const title = "Daftar Jual Saya";
 
   const [products, setProducts] = useState([]);
+
+  const [user, setUser] = useState("");
+
+  useEffect(() => {
+    userService.getUserBoard().then((response) => {
+      setUser(response.data.data);
+    });
+  }, []);
 
   const getProducts = async () => {
     try {
@@ -54,8 +63,10 @@ export default function ListProductPage() {
                   className="h-12 w-12 rounded-xl object-cover"
                 />
                 <div>
-                  <div className="font-medium">Nama Penjual</div>
-                  <div className="text-gray-400">kota</div>
+                  <div className="font-medium">{user.fullName}</div>
+                  <div className="text-gray-400">
+                    {user.city ? user.city : "kota"}
+                  </div>
                 </div>
               </div>
               <Link
@@ -100,13 +111,13 @@ export default function ListProductPage() {
                   <div className="flex justify-center">Tambah Produk</div>
                 </div>
               </Link>
-              {products.map((i) => (
-                <Link to={`/seller/preview-product/${i.id}`}>
+              {products.map((data) => (
+                <Link to={`/seller/preview-product/${data.id}`}>
                   <Card
-                    name={i.name}
-                    category={i.category.categoryName}
-                    price={i.price}
-                    id={i.id}
+                    name={data.name}
+                    category={data.category.categoryName}
+                    price={data.price}
+                    id={data.id}
                   />
                 </Link>
               ))}

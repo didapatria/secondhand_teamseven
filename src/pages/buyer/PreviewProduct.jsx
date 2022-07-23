@@ -116,8 +116,12 @@ export default function ProductPage() {
                       className="h-12 w-12 rounded-xl object-cover"
                     />
                     <div>
-                      <div className="font-medium">Nama Penjual</div>
-                      <div className="text-gray-400">kota</div>
+                      <div className="font-medium">
+                        {detail.userInfo.fullName}
+                      </div>
+                      <div className="text-gray-400">
+                        {detail.userInfo.city ? detail.userInfo.city : "kota"}
+                      </div>
                     </div>
                   </div>
                 </div>

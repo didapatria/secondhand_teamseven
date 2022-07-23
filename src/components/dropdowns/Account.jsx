@@ -19,25 +19,9 @@ export default function Account() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    UserService.getUserBoard().then(
-      (response) => {
-        setUser(response.data.data);
-      },
-      (error) => {
-        const _user =
-          (error.response &&
-            error.response.data &&
-            error.response.data.message) ||
-          error.message ||
-          error.toString();
-
-        setUser(_user);
-
-        if (error.response && error.response.status === 401) {
-          EventBus.dispatch("logout");
-        }
-      },
-    );
+    UserService.getUserBoard().then((response) => {
+      setUser(response.data.data);
+    });
   }, []);
 
   const openDropdown = () => {
@@ -89,6 +73,9 @@ export default function Account() {
             />
             <div>
               <div className="font-medium">{user.fullName}</div>
+              <div className="text-gray-400">
+                {user.city ? user.city : "kota"}
+              </div>
             </div>
           </div>
           <div>
