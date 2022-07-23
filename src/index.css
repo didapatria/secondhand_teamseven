@@ -20,3 +20,36 @@
     transform: scale(1.25);
   }
 }
+
+#customArrow .slick-next {
+  right: 10px;
+  z-index: 2;
+}
+
+#customArrow .slick-prev {
+  left: 10px;
+  z-index: 2;
+}
+
+#customArrow .slick-next::before,
+#customArrow .slick-prev::before {
+  color: gray;
+  @apply text-3xl;
+}
+
+#customArrow .slick-next.slick-disabled:before,
+#customArrow .slick-prev.slick-disabled:before {
+  display: none;
+}
+
+#customArrow .slick-dots {
+  bottom: 20px;
+}
+
+#customArrow .slick-dots li {
+  width: 15px;
+}
+
+#customArrow .slick-dots li button::before {
+  font-size: 8px;
+}

@@ -16,7 +16,7 @@ export default function InfoProductPage() {
     price: "",
     categoryId: "",
     description: "",
-    images: "",
+    images: [],
     published: false,
   };
 
@@ -193,14 +193,14 @@ export default function InfoProductPage() {
                     >
                       Preview
                     </Link>
-                    <Link
+                    <button
                       type="button"
-                      to="/seller/list-product"
+                      // to="/seller/list-product"
                       className="w-1/2 rounded-2xl border bg-purple-900 px-6 py-3 text-white hover:bg-white hover:text-purple-900 hover:shadow-lg hover:shadow-purple-900/50"
                       onClick={saveProduct}
                     >
                       Terbitkan
-                    </Link>
+                    </button>
                   </div>
                 </>
               )}

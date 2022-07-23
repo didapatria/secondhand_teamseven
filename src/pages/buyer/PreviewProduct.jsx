@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { FiChevronRight } from "react-icons/fi";
 import { useParams } from "react-router-dom";
+import CarouselProduct from "../../components/detailproduct/CarouselProduct";
 
 import Navbar from "../../components/Navbar";
 
@@ -45,36 +46,11 @@ export default function ProductPage() {
         <div className="w-full space-y-6 md:w-8/12">
           <div className="-space-y-16 md:flex md:space-y-0 md:space-x-8">
             <div className="w-full md:w-3/5">
-              <div className="relative -z-10 -mt-4 md:mt-0">
-                <img
-                  src={
-                    detail.productImages
-                      ? detail.productImages[0].imageUrl
-                      : "../../assets/gif/Spinner-1s-200px.gif"
-                  }
-                  alt=""
-                  className="h-80 w-full object-cover md:h-[400px] md:rounded-2xl"
-                />
-                <div className="absolute inset-y-1/2 right-4 hidden items-center md:flex">
-                  <div className="rounded-full bg-white p-1 text-gray-400">
-                    <FiChevronRight className="text-2xl" />
-                  </div>
-                </div>
-                <div className="absolute inset-x-0 bottom-0 mb-6 hidden items-center justify-center space-x-2 md:flex">
-                  <div className="h-2 w-2 rounded-full border border-purple-900 bg-purple-900" />
-                  <div className="h-2 w-2 rounded-full border border-purple-900 bg-gray-200" />
-                  <div className="h-2 w-2 rounded-full border border-purple-900 bg-gray-200" />
-                  <div className="h-2 w-2 rounded-full border border-purple-900 bg-gray-200" />
-                </div>
+              <div className="relative -mt-4 md:mt-0">
+                <CarouselProduct data={detail} />
               </div>
             </div>
             <div className="mx-auto w-11/12 flex-1 md:w-full">
-              <div className="mb-6 flex items-center justify-center space-x-2 md:hidden md:space-x-0">
-                <div className="h-2 w-2 rounded-full border border-white bg-white" />
-                <div className="h-2 w-2 rounded-full border border-white bg-none" />
-                <div className="h-2 w-2 rounded-full border border-white bg-none" />
-                <div className="h-2 w-2 rounded-full border border-white bg-none" />
-              </div>
               <div className="space-y-6">
                 <div className="space-y-6 rounded-2xl bg-white p-4 shadow-md">
                   <div className="space-y-2">
