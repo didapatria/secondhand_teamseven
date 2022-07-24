@@ -23,7 +23,7 @@ export default function Card(props) {
 
   useEffect(() => {
     getImage();
-  }, []);
+  }, [image]);
 
   const currencyFormatter = (value) => {
     const formattedAmount = Math.trunc(value)

@@ -14,13 +14,17 @@ import StatusBar from "../../components/StatusBar";
 import Card from "../../components/Card";
 import Navbar from "../../components/Navbar";
 import userService from "../../services/user.service";
+import Pagination from "../../components/pagination/Pagination";
+import authHeader from "../../services/auth-header";
 
 export default function ListProductPage() {
   const title = "Daftar Jual Saya";
 
   const [products, setProducts] = useState([]);
-
   const [user, setUser] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productsPerPage] = useState(8);
+  const page = currentPage - 1;
 
   useEffect(() => {
     userService.getUserBoard().then((response) => {
@@ -30,10 +34,9 @@ export default function ListProductPage() {
 
   const getProducts = async () => {
     try {
-      const page = 0;
-      const size = 8;
       const dataProducts = await axios.get(
-        `https://apisecondhand.herokuapp.com/api/products?page=${page}&size=${size}`,
+        `https://apisecondhand.herokuapp.com/api/products/seller?page=${page}&size=${productsPerPage}`,
+        { headers: authHeader() },
       );
       setProducts(await dataProducts.data.data);
     } catch (error) {
@@ -41,9 +44,12 @@ export default function ListProductPage() {
     }
   };
 
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   useEffect(() => {
     getProducts();
-  }, []);
+  }, [products]);
 
   return (
     <div>
@@ -123,6 +129,14 @@ export default function ListProductPage() {
               ))}
             </div>
           </div>
+          {products[0]?.id ? (
+            <Pagination
+              isSeller
+              productsPerPage={productsPerPage}
+              paginate={paginate}
+              currentPage={currentPage}
+            />
+          ) : null}
         </div>
       </div>
     </div>

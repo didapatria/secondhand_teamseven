@@ -8,16 +8,18 @@ import Navbar from "../components/Navbar";
 import Carousel from "../components/home/Carousel";
 import Categories from "../components/home/Categories";
 import Card from "../components/Card";
+import Pagination from "../components/pagination/Pagination";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productsPerPage] = useState(12);
+  const page = currentPage - 1;
 
   const getProducts = async () => {
     try {
-      const page = 0;
-      const size = 12;
       const dataProducts = await axios.get(
-        `https://apisecondhand.herokuapp.com/api/products?page=${page}&size=${size}`,
+        `https://apisecondhand.herokuapp.com/api/products?page=${page}&size=${productsPerPage}`,
       );
       setProducts(await dataProducts.data.data);
     } catch (error) {
@@ -25,9 +27,12 @@ export default function Home() {
     }
   };
 
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   useEffect(() => {
     getProducts();
-  }, []);
+  }, [products]);
 
   return (
     <div className="">
@@ -52,6 +57,13 @@ export default function Home() {
               </Link>
             ))}
           </div>
+        </div>
+        <div className="mx-auto w-11/12 md:container">
+          <Pagination
+            productsPerPage={productsPerPage}
+            paginate={paginate}
+            currentPage={currentPage}
+          />
         </div>
       </div>
       <div className="fixed inset-x-0 bottom-7 flex justify-center">
