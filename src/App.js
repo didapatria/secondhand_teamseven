@@ -4,6 +4,7 @@ import LoginPage from "./pages/auth/Login";
 import RegisterPage from "./pages/auth/Register";
 import InfoProfilePage from "./pages/InfoProfile";
 import InfoProductPage from "./pages/seller/InfoProduct";
+import UpdateProductPage from "./pages/seller/UpdateProduct";
 import PreviewProductPage from "./pages/seller/PreviewProduct";
 import ListProductPage from "./pages/seller/ListProduct";
 import InfoBidderPage from "./pages/seller/InfoBidder";
@@ -21,6 +22,10 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/info-profile" element={<InfoProfilePage />} />
         <Route path="/seller/info-product" element={<InfoProductPage />} />
+        <Route
+          path="/seller/info-product/:id"
+          element={<UpdateProductPage />}
+        />
         <Route
           path="/seller/preview-product/:id"
           element={<PreviewProductPage />}

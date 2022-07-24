@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import StatusBar from "../components/StatusBar";
 import Navbar from "../components/Navbar";
 
+import citys from "../model/city";
+
 export default function InfoProfilePage() {
   const title = "Lengkapi Info Akun";
 
@@ -37,11 +39,20 @@ export default function InfoProfilePage() {
               </div>
               <div className="space-y-1">
                 <div>Kota*</div>
-                <select className="w-full rounded-2xl border border-slate-300 px-4 py-3 text-slate-400">
-                  <option value="">Pilih Kota</option>
-                  <option value="">Pilih Kota</option>
-                  <option value="">Pilih Kota</option>
-                  <option value="">Pilih Kota</option>
+                <select
+                  name="city"
+                  id="city"
+                  className="w-full rounded-2xl border border-slate-300 px-4 py-3"
+                  required
+                  // value={user.city}
+                  // onChange={handleInputChange}
+                >
+                  <option value="" disabled selected hidden>
+                    Pilih Kota
+                  </option>
+                  {citys.map((city) => (
+                    <option value={city.value}>{city.label}</option>
+                  ))}
                 </select>
               </div>
               <div className="space-y-1">

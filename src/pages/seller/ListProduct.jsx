@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 import StatusBar from "../../components/StatusBar";
 import Card from "../../components/Card";
 import Navbar from "../../components/Navbar";
-import userService from "../../services/user.service";
+import UserService from "../../services/user.service";
 import Pagination from "../../components/pagination/Pagination";
 import authHeader from "../../services/auth-header";
 
@@ -27,7 +27,7 @@ export default function ListProductPage() {
   const page = currentPage - 1;
 
   useEffect(() => {
-    userService.getUserBoard().then((response) => {
+    UserService.getUserBoard().then((response) => {
       setUser(response.data.data);
     });
   }, []);

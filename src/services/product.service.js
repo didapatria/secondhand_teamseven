@@ -1,6 +1,10 @@
 import api from "./api";
 import TokenService from "./token.service";
 
+const get = (id) => {
+  return api.get(`product/${id}/detail`);
+};
+
 const create = (data) => {
   const user = TokenService.getUser();
 
@@ -23,6 +27,30 @@ const create = (data) => {
   });
 };
 
+const update = (id, data) => {
+  const user = TokenService.getUser();
+
+  return api.put(`product/${id}/save`, data, {
+    headers: {
+      Authorization: `Bearer ${user.accessToken}`,
+      "Content-Type": "multipart/form-data",
+    },
+  });
+};
+
+const remove = (id) => {
+  const user = TokenService.getUser();
+
+  return api.delete(`product/${id}/delete`, {
+    headers: {
+      Authorization: `Bearer ${user.accessToken}`,
+    },
+  });
+};
+
 export default {
+  get,
   create,
+  update,
+  remove,
 };

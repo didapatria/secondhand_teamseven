@@ -65,7 +65,7 @@ export default function Account() {
         }
       >
         <div className="space-y-4 text-base">
-          <div className="flex items-center space-x-5">
+          <div className="flex items-center space-x-3">
             <img
               src="../../assets/images/seller_profile.png"
               alt=""

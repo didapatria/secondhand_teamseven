@@ -73,7 +73,7 @@ export default function PreviewProductPage() {
                     </div>
                     <div className="flex w-full">
                       <Link
-                        to="/seller/info-product"
+                        to={`/seller/info-product/${detail.id}`}
                         className="w-full rounded-2xl border border-purple-900 bg-white px-6 py-3 text-center font-medium hover:bg-purple-900 hover:text-white hover:shadow-lg hover:shadow-purple-900/50"
                       >
                         Edit
